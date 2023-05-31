@@ -1,0 +1,104 @@
+commonAnnotations: {}
+commonLabels: {}
+fullnameOverride: prefect-server
+ingress:
+  annotations: {}
+  className: ''
+  enabled: false
+  extraHosts: []
+  extraPaths: []
+  extraRules: []
+  extraTls: []
+  host:
+    hostname: prefect.local
+    path: /
+    pathType: ImplementationSpecific
+  selfSigned: false
+  tls: false
+nameOverride: ''
+namespaceOverride: ''
+postgresql:
+  auth:
+    database: server
+    enablePostgresUser: false
+    existingSecret: null
+    password: ''
+    username: prefect
+  containerPorts:
+    postgresql: 5432
+  enabled: true
+  externalHostname: ''
+  image:
+    tag: 14.3.0
+  primary:
+    initdb:
+      user: postgres
+    persistence:
+      enabled: false
+      size: 8Gi
+  useSubChart: true
+server:
+  affinity: {}
+  autoscaling:
+    enabled: false
+    maxReplicas: 100
+    minReplicas: 1
+    targetCPU: 80
+    targetMemory: 80
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    runAsUser: 1001
+  env: []
+  extraContainers: []
+  extraEnvVarsCM: ''
+  extraEnvVarsSecret: ''
+  extraVolumeMounts: []
+  extraVolumes: []
+  image:
+    debug: false
+    prefectTag: 2.10.11-python3.10
+    pullPolicy: IfNotPresent
+    pullSecrets: []
+    repository: prefecthq/prefect
+  livenessProbe:
+    config:
+      failureThreshold: 3
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    enabled: false
+  nodeSelector: {}
+  podAnnotations: {}
+  podLabels: {}
+  podSecurityContext:
+    fsGroup: 1001
+    runAsNonRoot: true
+    runAsUser: 1001
+  publicApiUrl: ''
+  readinessProbe:
+    config:
+      failureThreshold: 3
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    enabled: false
+  replicaCount: 1
+  resources:
+    limits: {}
+    requests: {}
+  tolerations: []
+service:
+  annotations: {}
+  clusterIP: ''
+  externalTrafficPolicy: Cluster
+  nodePort: ''
+  port: 4200
+  type: ClusterIP
+serviceAccount:
+  annotations: {}
+  create: true
+  name: ''

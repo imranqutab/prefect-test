@@ -1,0 +1,28 @@
+apiVersion: v2
+appVersion: 2.10.11
+dependencies:
+- name: common
+  repository: https://charts.bitnami.com/bitnami
+  tags:
+  - bitnami-common
+  version: 2.2.4
+- condition: postgresql.useSubChart
+  name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 12.4.2
+description: Prefect server application bundle
+home: https://github.com/PrefectHQ
+maintainers:
+- email: jamie@prefect.io
+  name: jamiezieziula
+- email: jimi@prefect.io
+  name: jimid27
+- email: edward@prefect.io
+  name: parkedwards
+- email: jonathan@prefect.io
+  name: jawnsy
+name: prefect-server
+sources:
+- https://github.com/PrefectHQ/prefect-helm
+type: application
+version: 2023.05.25
